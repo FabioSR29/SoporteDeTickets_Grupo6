@@ -34,6 +34,8 @@ class ticketTest extends TestCase
     public function testMostrarTicket()
     {
 
+        $ticketData = Ticket::factory()->make()->toArray();
+
         $response = $this->get('/api/tickets/mostrar'); 
         $response->assertStatus(200);
 

@@ -20,14 +20,14 @@ class ticketController extends Controller
         $request->validate([
             'titulo' => 'required',
             'descripcion' => 'required',
-            'archivo_adjunto' => 'nullable|file|max:2048' // Tamaño máximo de archivo de 2MB
+            'archivo_adjunto' => 'nullable|file|max:2048'
         ]);
 
         $ticket = new Ticket();
         $ticket->titulo = $request->input('titulo');
         $ticket->descripcion = $request->input('descripcion');
 
-        // Adjuntar archivo si se proporcionó
+      
         if ($request->hasFile('archivo_adjunto')) {
             $archivoAdjunto = $request->file('archivo_adjunto');
             $contenidoArchivo = file_get_contents($archivoAdjunto);
